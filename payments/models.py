@@ -1,7 +1,5 @@
-from django.db import models
-
 # Create your models here.
-class Donation(models.Model):
+class Donation(utils.Model):
 	MONEY = 'mo'
 	HOURS = 'hr'
 	GOODS = 'gd'
