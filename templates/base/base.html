@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "external/flatui/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "external/flatui/css/flat-ui.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="header">  
+      <h1>Header</h1>
+    </div>
+    <div class="container">
+    </div>
+    <div class="footer">
+      <h1>Footer</h1>
+    </div>
+    <script src="{% static "external/flatui/js/jquery-1.8.3.min.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/jquery-ui-1.10.3.custom.min.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/jquery.ui.touch-punch.min.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "external/flatui/js/bootstrap-select.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/bootstrap-switch.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/flatui-checkbox.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/flatui-radio.js" %}"></script>
+    <script src="{% static "external/flatui/js/jquery.tagsinput.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/jquery.placeholder.js" %}">
+    </script>
+    <script src="{% static "external/flatui/js/jquery.stacktable.js" %}">
+    </script>
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <script src="{% static "external/flatui/js/application.js" %}"></script>
+  </body>
+</html>

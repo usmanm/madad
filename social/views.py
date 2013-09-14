@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
 from social.models import Activity
 
 def user(request, user_id):
-  return HttpResponse()
+  return render_to_response('base/base.html')
 
 @login_required
 def like_activity(request, activity_id):
