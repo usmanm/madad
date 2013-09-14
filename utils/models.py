@@ -2,15 +2,17 @@ import uuid
 
 from django.db import models
 
-class Model(models.Model):
+class BaseModel(models.Model):
   class Meta:
     abstract = True # So that Django doesn't create a global `Model` table.
 
-  hash_id = models.CharField(null=False, blank=False, max_length=36)
+  hash_id = models.CharField(max_length=36, null=False, blank=False,
+                             db_index=True)
   date_created = models.DateTimeField(auto_now_add=True, null=False,
-                                      blank=False)
-  date_updated = models.DateTimeField(auto_now=True, null=False, blank=False)
+                                      blank=False, db_index=True)
+  date_updated = models.DateTimeField(auto_now=True, null=False, blank=False,
+                                      db_index=True)
 
   def save(self, *args, **kwargs):
     self.hash_id = str(uuid.uuid4()) # Random UUID.
-    super(Model, self).save(*args, **kwargs)
+    super(BaseModel, self).save(*args, **kwargs)

@@ -117,6 +117,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'campaign',
+    'payments',
+    'social',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -149,3 +152,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_USER_MODEL = 'social.User' # Extended User model.
