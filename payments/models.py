@@ -1,7 +1,7 @@
 from django.db import models
-from website import User
 
-# Create your models here.
-class Payment(models.Model):
+from utils.models import BaseModel
+
+class Payment(BaseModel):
 	payment_type = models.CharField(max_length=200)
 	
