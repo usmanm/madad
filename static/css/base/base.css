@@ -1,0 +1,13 @@
+.navbar-list {
+    float: right;
+}
+
+.navbar-logo {
+    float: left;
+    font-color: "#ffffff";
+}
+
+.inner-container {
+    margin-top: 60px;
+    margin-bottom: 10px;
+}

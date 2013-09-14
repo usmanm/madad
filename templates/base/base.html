@@ -8,18 +8,37 @@
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static "external/flatui/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "external/flatui/css/flat-ui.css" %}" rel="stylesheet">
+    <link href="{% static "css/base/base.css" %}" rel="stylesheet">
   </head>
 
   <body>
-    <div class="header">  
-      <h1>Header</h1>
-    </div>
     <div class="container">
-      {% block container %}
-      {% endblock %}
-    </div>
-    <div class="footer">
-      <h1>Footer</h1>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="navbar-logo">
+              Madad
+            </div>
+            <div class="navbar-list">
+              <ul class="nav">
+                <li class="">
+                  <a href="/signup/">Sign Up</a>
+                </li>
+                <li class="">
+                  <a href="/login/">Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-container row">
+        {% block container %}
+        {% endblock %}
+      </div>
+      <div class="footer row">
+      
+      </div>
     </div>
     <script src="{% static "external/flatui/js/jquery-1.8.3.min.js" %}">
     </script>
