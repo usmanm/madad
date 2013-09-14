@@ -7,7 +7,5 @@ urlpatterns = patterns('',
 	url(r'^/', 'website.views.index'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    # Examples:
-    # url(r'^$', 'website.views.home', name='home'),
-    # url(r'^website/', include('website.foo.urls')),
+    url(r'^social/', include('social.urls')),
 )
