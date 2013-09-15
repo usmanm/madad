@@ -57,7 +57,7 @@
 
    <h5>Goals</h5>
    {% for need in needs %}
-   <span >{{ need.fulfilled }} of {{ need.donation.amount }} 
+   <span ><span id="fa-{{need.hash_id}}">{{ need.fulfilled }}</span> of {{ need.donation.amount }} 
      {% if need.donation.moneydonation %}
      dollars
      {% elif need.donation.hoursdonation %}
@@ -67,7 +67,7 @@
      items
      {% endif %}
      raised</span> 
-   <div class="progress need-progress">
+   <div data-id="{{need.hash_id}}" class="progress need-progress">
      <div class="bar" style="width: {{need.fulfilled_percent}}%;"></div>
    </div>
    {% endfor %}

@@ -1,8 +1,10 @@
+import json
+
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from campaign.models import Campaign
-from campaign.models import Need
+from campaign.models import Campaign, Need
 import  datetime
 
 def campaign(request, campaign_id):
@@ -21,6 +23,14 @@ def campaign(request, campaign_id):
                              'needs': needs,
                              'needs_status':needs_status,
                              'time_elapsed':time_percentage_elapsed}))
+
+def needs(request, campaign_id):
+  campaign = Campaign.objects.get(hash_id=campaign_id)
+  needs = Need.objects.filter(campaign=campaign).all()
+  return HttpResponse(
+    json.dumps({need.hash_id: [float(need.fulfilled),
+                               float(need.donation.amount)]
+                for need in needs}))
 
 @login_required
 def create_campaign(request, user_id):
