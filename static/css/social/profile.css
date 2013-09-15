@@ -1,0 +1,90 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: 30%;
+    text-align: center;
+    background: white;
+    z-index: 2; 
+}
+
+.sidebar a {
+    text-decoration: none;
+}
+
+.sidebar .sidebar-background {
+    background-image: url(/media/social/user/admin_header.jpg);
+    background-color: #eff0f2;
+    position: relative;
+    height: 72%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position-x: 55%; 
+}
+
+.sidebar .sidebar-profile {
+    position: absolute;
+    bottom: -215px;
+    left: 15%;
+    right: 15%; 
+}
+
+.sidebar .sidebar-bio {
+    font-size: 0.9em;
+    margin-bottom: 15px; 
+}
+
+.sidebar .sidebar-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    margin: auto;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid white; 
+}
+
+.sidebar .sidebar-avatar .profile-photo {
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%; 
+}
+
+.sidebar .sidebar-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar .sidebar-bio {
+    margin-top: 10px;
+}
+
+.activities {
+    width: 60%;
+    float: right;
+}
+
+.activity {
+    padding: 10px;
+}
+
+.activity a {
+    text-decoration: none;
+}
+
+.activity .activity-meta {
+    margin-left: 26px;
+    margin-top: -6px;
+    text-transform: lowercase;
+    font-weight: 500;
+    color: #988b72;
+    font-size: 0.83333em;
+}

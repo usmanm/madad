@@ -1,5 +1,52 @@
 {% extends "base/base.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static "css/social/profile.css" %}" rel="stylesheet">
+{% endblock %}
+{% block js %}
+<script src="{% static "js/social/profile.js" %}">
+</script>
+{% endblock %}
 
 {% block container %}
-USMAN
+<header class="sidebar">
+  <div class="sidebar-background">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+        <a href="/">
+          <img src="{{ user.photo.url }}" class="profile-photo">
+        </a>
+      </div>
+      <h2 class="sidebar-name">
+        <a href="/social/user/{{ user.username }}">@{{ user.username }}</a>
+      </h2>
+      <div class="sidebar-location">
+        {{ user.location }}
+      </div>
+      <div class="sidebar-bio">
+        {{ user.biography }}
+      </div>
+    </div>
+  </div>
+</header>
+<div class="activities">
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<br/>
+<h4>Recent Activities</h4>
+{% for activity in activities.all %}
+  <div class="activity">
+    <p class="activity-text"><a href="#"><span data-id="{{ activity.hash_id }}" class="fui-heart activity-like" onclick="like_activity(this);"></a></span> &nbsp&nbsp 
+    {% if activity.donationactivity %}
+    Donated {{ activity.donationactivity.donation.amount }} to <a href="/campaign/{{ activity.donationactivity.campaign.name }}">{{ activity.donationactivity.campaign.name }}
+    {% elif activity.followactivity %}
+    Started following <a href="/social/user/{{ activity.followactivity.followed_user.username }}">{{ activity.followactivity.followed_user.first_name }} {{ activity.followactivity.followed_user.last_name }}
+    {% endif %}
+    </a>.</p>
+    <div class="activity-meta">
+      <time class="activity-time">{{ activity.date_created }}</time>
+    </div>
+  </div>
+{% endfor %}
+</div>
 {% endblock %}

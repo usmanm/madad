@@ -9,29 +9,27 @@
     <link href="{% static "external/flatui/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "external/flatui/css/flat-ui.css" %}" rel="stylesheet">
     <link href="{% static "css/base/base.css" %}" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
   </head>
 
   <body>
     <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <div class="navbar-logo">
-              Madad
-            </div>
-            <div class="navbar-list">
-              <ul class="nav">
-                <li class="">
-                  <a href="/signup/">Sign Up</a>
-                </li>
-                <li class="">
-                  <a href="/login/">Login</a>
-                </li>
-              </ul>
-            </div>
+      <header class="base-header">
+        <div class="base-logo">MADDAD</div>
+        <nav class="base-nav">
+          <div>
+            {% if user.is_authenticated %}
+              <a href="/social/user/{{ user.username }}" class="base-login-link">@{{ user.username }}</a>
+            {% else %}
+              <a href="/social/signup/" class="base-signup-link">Signup</a>
+              <a href="/social/login/" class="base-login-link">Login</a>
+            {% endif %}
           </div>
-        </div>
-      </div>
+        </nav>
+      </header>
       <div class="inner-container row">
         {% block container %}
         {% endblock %}
