@@ -1,0 +1,18 @@
+.landing-image {
+    background-image: url(http://wmca.org/wp-content/uploads/2010/10/general_header.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.no-left {
+    margin-left: 0px;
+}
+
+.pad-right {
+    padding-right: 15px;
+}
+
+.inner-container {
+    margin-top: 25px;
+}

@@ -10,12 +10,14 @@ body {
 
 .base-logo {
     display: inline;
+    margin-left: 20px;
 }
 
 .base-nav {
     float: right;
     text-transform: uppercase;
     opacity: 0.5;
+    margin-right: 20px;
 }
 
 .base-nav a {

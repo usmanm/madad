@@ -10,6 +10,8 @@ class Donation(BaseModel):
 
   def save(self):
     super(Donation, self).save()
+    if not self.user:
+      return
     from social.models import DonationActivity
     donation_activity = DonationActivity(user=self.user,
                                          donation=self)

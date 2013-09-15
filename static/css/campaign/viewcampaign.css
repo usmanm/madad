@@ -1,0 +1,38 @@
+.campaign-meta {
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+.inline {
+    display: inline;
+}
+
+.need-progress {
+    margin-top: 5px;
+}
+
+.donate-box {
+    font-size: 14px;
+    padding: 20px;
+    border: 2px solid #1abc9c
+}
+
+.campaign-name {
+    margin-top: 25px;
+}
+
+.campaign-photo-container {
+    text-align: center;
+}
+
+.campaign-photo img.wide {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+.campaign-photo img.tall {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}
