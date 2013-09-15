@@ -2,16 +2,22 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 
-from social.models import Activity
+from social.models import Activity, User
 
 @login_required
 def user(request, user_id):
+  user = User.objects.get(username=user_id)
+  if request.user.is_authenticated():
+    follows = user.followers.filter(username=request.user.username).exists()
+  else:
+    follows = False
   return render_to_response(
     'social/profile.html', 
     RequestContext(
       request, 
-      {'user': request.user,
-       'activities': request.user.activities.order_by('-date_created')
+      {'profile_user': user,
+       'activities': user.activities.order_by('-date_created'),
+       'follows': follows
        }))
 
 def login(request):

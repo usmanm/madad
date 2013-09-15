@@ -67,8 +67,24 @@
     margin-top: 10px;
 }
 
-.activities {
+.social-content {
     width: 60%;
+    float: right;
+}
+
+.social-name-container {
+    padding-top: 20px;
+}
+
+.social-name {
+    float: left;
+}
+
+.recent-activities {
+    clear: both;
+}
+
+.follow-btn {
     float: right;
 }
 

@@ -5,4 +5,3 @@ urlpatterns = patterns('social.views',
     url(r'login/$', 'login'),
     url(r'signup/$', 'login'),
 )
-

@@ -3,17 +3,23 @@ from django.db import models
 from utils.models import BaseModel
 
 class Donation(BaseModel):
-  MONEY = 'mo'
-  HOURS = 'hr'
-  GOODS = 'gd'
+  amount = models.DecimalField(max_digits=10, decimal_places=2)
+  user = models.ForeignKey('social.User', related_name='donations')
+  campaign = models.ForeignKey('campaign.Campaign', related_name='donations')
 
-  UNIT_CHOICES = (
-    (MONEY, 'Money'),
-    (HOURS, 'Hours'),
-    (GOODS, 'Physical Goods'),
-    )
+  def save(self):
+    super(Donation, self).save()
+    if isinstance(self, MoneyDonation):
+      from social.models import DonationActivity
+      donation_activity = DonationActivity(user=self.user,
+                                           donation=self)
+      donation_activity.save()
 
-  date = models.DateTimeField()
-  unit = models.CharField(max_length=200, choices=UNIT_CHOICES) #could be money, hours, physical goods
-  detail = models.CharField(max_length=200) #currency, type of hours, type of good
-  amount = models.DecimalField(max_digits=100, decimal_places=2)
+class MoneyDonation(Donation):
+  pass
+
+class GoodsDonation(Donation):
+  name = models.CharField(max_length=256)
+
+class HoursDonation(Donation):
+  schedule = models.TextField() # Serialized JSON.

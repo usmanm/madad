@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django_twilio',
     'campaign',
     'payments',
     'social',
@@ -161,3 +162,6 @@ LOGGING = {
 }
 
 AUTH_USER_MODEL = 'social.User' # Extended User model.
+
+TWILIO_ACCOUNT_SID = 'AC361966cbbbc7701020a0f7469dc1af88'
+TWILIO_AUTH_TOKEN = 'd35d88bcb1943edbf9ebb774a862f70d'
