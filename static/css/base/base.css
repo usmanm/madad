@@ -13,6 +13,11 @@ body {
     margin-left: 0px;
 }
 
+.base-logo a {
+    text-decoration: none;
+    color: #3e3f3a;
+}
+
 .base-nav {
     float: right;
     text-transform: uppercase;

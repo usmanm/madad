@@ -4,7 +4,9 @@ function refresh_needs() {
     function(data) {
       $.each($('.need-progress'), function(i, item) {
         item = $(item);
-        data = JSON.parse(data);
+        if (typeof(data) == "string") {
+          data = JSON.parse(data);
+        }
         var id = item.attr('data-id');
         if (!data[id]) return;
         bar = $(item.find('.bar')[0]);
