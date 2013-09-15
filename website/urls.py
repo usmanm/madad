@@ -38,6 +38,9 @@ if settings.DEBUG:
         exclude = set(obj.exclude or [])
         exclude.add('hash_id')
         obj.exclude = list(exclude)
+        list_display = set(obj.list_display or [])
+        list_display.add('hash_id')
+        obj.list_display = list(list_display)
     except ImportError:
       continue
     
