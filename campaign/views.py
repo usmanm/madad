@@ -15,3 +15,4 @@ def create_campaign(request, user_id):
   return render_to_response('campaign/createcampaign.html')
 
 def donate_money(request, user_id):
+  return null
