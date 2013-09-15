@@ -1,3 +1,6 @@
+import importlib
+import inspect
+
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin; admin.autodiscover()
@@ -23,3 +26,20 @@ if settings.DEBUG:
                              serve,
                              {'document_root': settings.MEDIA_ROOT}))
     del(_media_url, serve)
+
+  for app in settings.INSTALLED_APPS:
+    if app.startswith('django'):
+      continue
+    try:
+      module = importlib.import_module('%s.%s' % (app, 'admin'))
+      print module
+      for name, obj in inspect.getmembers(module):
+        if not (inspect.isclass(obj) and issubclass(obj, admin.ModelAdmin)):
+          continue
+        exclude = set(obj.exclude or [])
+        exclude.add('hash_id')
+        obj.exclude = list(exclude)
+    except ImportError:
+      continue
+    
+    
