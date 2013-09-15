@@ -5,6 +5,10 @@
     text-align: right;
 }
 
+body a {
+    text-decoration: none;
+}
+
 .no-left {
     margin-left: 0px;
 }

@@ -12,6 +12,7 @@ class Campaign(BaseModel):
                                  related_name='needed_for')
   start_date = models.DateField()
   end_date = models.DateField()
+  user = models.ForeignKey('social.User', related_name='campaigns')
 
 class Need(BaseModel):
   name = models.TextField(null=True, blank=True)
