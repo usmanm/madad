@@ -1,20 +1,20 @@
 {% extends "base/base.html" %}
 
-{% block title %} Madad - {{title}} {% endblock %}
+{% block title %} Madad - {{campaign.name}} {% endblock %}
 
 {% block container %}
- <h1> {{title}} </h1>
- <h2> {{tagline}} </h2>
+ <h1> {{campaign.name}} </h1>
+ <h2> {{campaign.tagline}} </h2>
  <div class="row">
- <div class="span8"><img src={{image_url}}></div>
+ <div class="span8"><img src={{campaign.image_url}}></div>
  <div class="span4"><div class="hero-unit" style="padding:20px; border:2px solid #1abc9c">
  	<h2>Donate</h2>
- 	<form>
-  		<input type="text" class="span2" style="margin-top:10px" placeholder="USD">
+ 	<form action="campaign/donatemoney">
+  		<input type="text" class="span2" style="margin-top:10px" placeholder="USD"
   		<button type="submit" class="btn btn-primary">Give Money</button>
 	</form>
 	<form>
-		{% for item in needs %}
+		{% for item in campaign.needs %}
 			<label class="radio">
             <span class="icons"><span class="first-icon fui-radio-unchecked"></span><span class="second-icon fui-radio-unchecked"></span></span><input type="radio" name="needs" value={{item}} data-toggle="radio">
             {{item}}
@@ -28,19 +28,20 @@
 </div>
 <h2>Goals</h2>
 {% if money_status != null %}
-<h3>${{money_status.0}} of ${{money_status.1}} raised</h3> 
+<h4>${{money_status.0}} of ${{money_status.1}} raised</h4> 
 <div class="progress">
     <div class="bar" style="width: 45%;"></div>
 </div>
 {% endif %}
 {% if needs_status != null %}
 {% for key, values in needs_status.items %}
-<h3>{{ values.0 }} of {{ values.1 }} {{ key }} hours raised</h3> 
+<h4>{{ values.0 }} of {{ values.1 }} {{ key }} hours raised</h4> 
 <div class="progress">
     <div class="bar" style="width: {{values.2}}%;"></div>
 </div>
 {% endfor %}
 {% endif %}
- <h3> {{description}} </h3>
+ <h3> Description </h3>
+ <h4>{{campaign.description}}</h4>
 
 {% endblock %}

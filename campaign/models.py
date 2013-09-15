@@ -15,4 +15,6 @@ class Campaign(BaseModel):
 class Need(BaseModel):
   need = models.ForeignKey(Donation)
   campaign = models.ForeignKey(Campaign)
+  fulfilled = models.DecimalField()
+  target = models.DecimalField()
   #substitution  factor
