@@ -23,7 +23,13 @@ class Need(BaseModel):
   def remaining(self):
     remaining = self.donation.amount
     for donation in self.campaign.donations.filter(user__isnull=False):
-      if type(donation) != type(self.donation):
+      ignore = False
+      for x in ['money', 'hours', 'goods']:
+        if not hasattr(self.donation, x + 'donation'):
+          continue
+        if not hasattr(donation, x + 'donation'):
+          ignore = True
+      if ignore:
         continue
       remaining -= donation.amount
     return remaining

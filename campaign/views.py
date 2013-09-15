@@ -12,7 +12,7 @@ def campaign(request, campaign_id):
   needs = Need.objects.filter(campaign=campaign).all()
   needs_status = {}
   for need in Need.objects.filter(campaign=campaign).all():
-    target = need.remaining + need.fulfilled
+    target = need.donation.amount
     needs_status[need] = (need.fulfilled, target , need.fulfilled*100/target)
 
   time_percentage_elapsed = ((datetime.date.today() - campaign.start_date).total_seconds() * 100)/(campaign.end_date - campaign.start_date).total_seconds()
