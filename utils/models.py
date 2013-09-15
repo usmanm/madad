@@ -11,5 +11,6 @@ class BaseModel(models.Model):
   date_updated = models.DateTimeField(auto_now=True, db_index=True)
 
   def save(self, *args, **kwargs):
-    self.hash_id = str(uuid.uuid4()) # Random UUID.
+    if not self.hash_id:
+      self.hash_id = str(uuid.uuid4()) # Random UUID.
     super(BaseModel, self).save(*args, **kwargs)
