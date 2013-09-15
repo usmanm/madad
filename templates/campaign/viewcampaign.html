@@ -13,11 +13,33 @@
 
 {% block container %}
 <div class="campaign-name">
- <h1 class="inline" > {{campaign.name}} /</h1>
+ <h1 class="inline" > {{campaign.name}}</h1></br>
  <h4 class="inline"> {{campaign.tagline}} </h4>
 </div>
  <div class="row campaign-photo-container">
-   <div class="span12"><img class="campaign-photo" src={{campaign.image.url}}></div>
+   <div class="span8"><img class="campaign-photo" src={{campaign.image.url}}></div>
+   <div class="span4">
+ <div class="hero-unit donate-box">
+ 	<h5>Donate</h5>
+	<form action="campaign/donate">
+		{% for need in needs %}
+      <div>
+  		<input name="{{ need.hash_id }}" type="text" class="span2" style="margin-top:10px"
+      {% if need.donation.moneydonation %}
+             placeholder="USD">
+  		<button type="submit" class="btn btn-primary">Give Money</button>
+      {% elif need.donation.hoursdonation %}
+             placeholder="{{ need.name|lower }}">
+  		<button type="submit" class="btn btn-primary">Give Hours</button>
+      {% elif need.donation.goodsdonation %}
+             placeholder="{{ need.name|lower }}">
+  		<button type="submit" class="btn btn-primary">Give Goods</button>
+      {% endif %}
+      </div>
+		{% endfor %}
+	</form>
+ </div>
+ </div>
  </div>
  <div class="campaign-meta row">
  <div class="span8">
@@ -39,28 +61,6 @@
    {% endfor %}
   Time left: 
   {{ campaign.end_date|timeuntil }}
- </div>
- <div class="span4">
- <div class="hero-unit donate-box">
- 	<h5>Donate</h5>
-	<form action="campaign/donate">
-		{% for need in needs %}
-      <div>
-  		<input name="{{ need.hash_id }}" type="text" class="span2" style="margin-top:10px"
-      {% if need.donation.moneydonation %}
-             placeholder="USD">
-  		<button type="submit" class="btn btn-primary">Give Money</button>
-      {% elif need.donation.hoursdonation %}
-             placeholder="{{ need.name|lower }}">
-  		<button type="submit" class="btn btn-primary">Give Hours</button>
-      {% elif need.donation.goodsdonation %}
-             placeholder="{{ need.name|lower }}">
-  		<button type="submit" class="btn btn-primary">Give Goods</button>
-      {% endif %}
-      </div>
-		{% endfor %}
-	</form>
- </div>
  </div>
 </div>
  	<h4>What's the campaign about?</h4>
