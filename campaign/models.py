@@ -15,7 +15,7 @@ class Campaign(BaseModel):
 class Need(BaseModel):
   donation = models.ForeignKey(Donation)
   campaign = models.ForeignKey(Campaign)
-
+  
   @property
   def remaining(self):
     remaining = self.donation.amount
@@ -28,3 +28,4 @@ class Need(BaseModel):
   @property
   def fulfilled(self):
     return self.donation.amount - self.remaining()
+
