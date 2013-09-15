@@ -22,7 +22,9 @@
 }
 
 .campaign-photo-container {
-    text-align: center;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .campaign-photo img.wide {
