@@ -45,14 +45,13 @@
  	<h5>Donate</h5>
 	<form action="campaign/donate">
 		{% for need in needs %}
-      {{ need.name }}
       <div>
   		<input name="{{ need.hash_id }}" type="text" class="span2" style="margin-top:10px"
       {% if need.donation.moneydonation %}
              placeholder="USD">
   		<button type="submit" class="btn btn-primary">Give Money</button>
       {% elif need.donation.hoursdonation %}
-             placeholder="hours">
+             placeholder="{{ need.name|lower }}">
   		<button type="submit" class="btn btn-primary">Give Hours</button>
       {% elif need.donation.goodsdonation %}
              placeholder="{{ need.name|lower }}">
