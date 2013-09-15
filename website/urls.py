@@ -32,7 +32,6 @@ if settings.DEBUG:
       continue
     try:
       module = importlib.import_module('%s.%s' % (app, 'admin'))
-      print module
       for name, obj in inspect.getmembers(module):
         if not (inspect.isclass(obj) and issubclass(obj, admin.ModelAdmin)):
           continue
