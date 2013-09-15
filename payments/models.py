@@ -4,7 +4,8 @@ from utils.models import BaseModel
 
 class Donation(BaseModel):
   amount = models.DecimalField(max_digits=10, decimal_places=2)
-  user = models.ForeignKey('social.User', related_name='donations')
+  user = models.ForeignKey('social.User', related_name='donations',
+                           null=True, blank=True)
   campaign = models.ForeignKey('campaign.Campaign', related_name='donations')
 
   def save(self):
