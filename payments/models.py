@@ -9,11 +9,10 @@ class Donation(BaseModel):
 
   def save(self):
     super(Donation, self).save()
-    if isinstance(self, MoneyDonation):
-      from social.models import DonationActivity
-      donation_activity = DonationActivity(user=self.user,
-                                           donation=self)
-      donation_activity.save()
+    from social.models import DonationActivity
+    donation_activity = DonationActivity(user=self.user,
+                                         donation=self)
+    donation_activity.save()
 
 class MoneyDonation(Donation):
   pass

@@ -20,9 +20,6 @@ class Activity(BaseModel):
   liked_by = models.ManyToManyField(User, related_name='likers',
                                     null=True, blank=True)
 
-  def human_string(self):
-    raise NotImplemented
-
 class DonationActivity(Activity):
   donation = models.ForeignKey(Donation)
 
