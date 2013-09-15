@@ -5,7 +5,7 @@ body {
 .base-header {
     margin-right: auto;
     margin-left: auto;
-    padding: 1.2em 2rem 0;
+    padding: 1.2em 0 0 0;
 }
 
 .base-logo {

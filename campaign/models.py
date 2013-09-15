@@ -7,7 +7,8 @@ class Campaign(BaseModel):
   tagline = models.TextField()
   description = models.TextField()
   image_url = models.URLField()
-  needs = models.ManyToManyField(Donation, through='Need')
+  needs = models.ManyToManyField(Donation, through='Need',
+                                 related_name='needed_for')
   start_date = models.DateField()
   end_date = models.DateField()
 

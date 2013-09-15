@@ -1,6 +1,10 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
 
+{% block title %}
+{{ profile_user.first_name }} {{ profile_user.last_name }} ({{ profile_user.username }})
+{% endblock %}
+
 {% block css %}
 <link href="{% static "css/social/profile.css" %}" rel="stylesheet">
 {% endblock %}
@@ -15,30 +19,41 @@
     <div class="sidebar-profile">
       <div class="sidebar-avatar">
         <a href="/">
-          <img src="{{ user.photo.url }}" class="profile-photo">
+          <img src="{{ profile_user.photo.url }}" class="profile-photo">
         </a>
       </div>
       <h2 class="sidebar-name">
-        <a href="/social/user/{{ user.username }}">@{{ user.username }}</a>
+        <a href="/social/user/{{ profile_user.username }}">@{{ profile_user.username }}</a>
       </h2>
       <div class="sidebar-location">
-        {{ user.location }}
+        {{ profile_user.location }}
       </div>
       <div class="sidebar-bio">
-        {{ user.biography }}
+        {{ profile_user.biography }}
       </div>
     </div>
   </div>
 </header>
-<div class="activities">
-<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<div class="social-content">
+<div class="social-name-container">
+  <h1 class="social-name">{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+  {% ifnotequal profile_user user %} 
+    {% if follows %}
+      <a data-id="{{ profile_user.username }}" class="btn btn-primary btn-large follow-btn" href="#" onclick="unfollow_user(this);">Unfollow</a>
+    {% else %}
+      <a data-id="{{ profile_user.username }}" class="btn btn-primary btn-large follow-btn" href="#" onclick="follow_user(this);">Follow</a>
+    {% endif %}
+  {% endifnotequal %}
+</div>
 <br/>
-<h4>Recent Activities</h4>
+<div class="recent-activities">
+  <h4>Recent Activities</h4>
+</div>
 {% for activity in activities.all %}
   <div class="activity">
     <p class="activity-text"><a href="#"><span data-id="{{ activity.hash_id }}" class="fui-heart activity-like" onclick="like_activity(this);"></a></span> &nbsp&nbsp 
     {% if activity.donationactivity %}
-    Donated {{ activity.donationactivity.donation.amount }} to <a href="/campaign/{{ activity.donationactivity.campaign.name }}">{{ activity.donationactivity.campaign.name }}
+    Donated {{ activity.donationactivity.donation.amount }} to <a href="/campaign/{{ activity.donationactivity.donation.campaign.name }}">{{ activity.donationactivity.donation.campaign.name }}
     {% elif activity.followactivity %}
     Started following <a href="/social/user/{{ activity.followactivity.followed_user.username }}">{{ activity.followactivity.followed_user.first_name }} {{ activity.followactivity.followed_user.last_name }}
     {% endif %}

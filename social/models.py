@@ -7,6 +7,7 @@ from utils.models import BaseModel
 
 class User(AbstractUser):
   photo = models.ImageField(upload_to='social/user/')
+  phone = models.CharField(max_length=20, db_index=True, null=True, blank=True)
   location = models.CharField(max_length=256, null=True, blank=True)
   biography = models.CharField(max_length=256, null=True, blank=True)
   follows = models.ManyToManyField('User', related_name='followers',
@@ -24,7 +25,6 @@ class Activity(BaseModel):
 
 class DonationActivity(Activity):
   donation = models.ForeignKey(Donation)
-  campaign = models.ForeignKey(Campaign)
 
 class FollowActivity(Activity):
   followed_user = models.ForeignKey(User)
