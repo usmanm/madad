@@ -53,7 +53,7 @@
   <div class="activity">
     <p class="activity-text"><a href="#"><span data-id="{{ activity.hash_id }}" class="fui-heart activity-like" onclick="like_activity(this);"></a></span> &nbsp&nbsp 
     {% if activity.donationactivity %}
-    Donated {{ activity.donationactivity.donation.amount }} to <a href="/campaign/{{ activity.donationactivity.donation.campaign.name }}">{{ activity.donationactivity.donation.campaign.name }}
+    Donated {{ activity.donationactivity.donation.amount }} to <a href="/campaign/viewcampaign/{{ activity.donationactivity.donation.campaign.hash_id }}">{{ activity.donationactivity.donation.campaign.name }}
     {% elif activity.followactivity %}
     Started following <a href="/social/user/{{ activity.followactivity.followed_user.username }}">{{ activity.followactivity.followed_user.first_name }} {{ activity.followactivity.followed_user.last_name }}
     {% endif %}
