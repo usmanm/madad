@@ -13,8 +13,6 @@ class Campaign(BaseModel):
   end_date = models.DateField()
 
 class Need(BaseModel):
-  need = models.ForeignKey(Donation)
+  donation = models.ForeignKey(Donation)
   campaign = models.ForeignKey(Campaign)
-  fulfilled = models.DecimalField()
-  target = models.DecimalField()
   #substitution  factor
