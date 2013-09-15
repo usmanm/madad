@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     url(r'^social/', include('social.urls')),
     url(r'^payments/', include('payments.urls')),
     url(r'^campaign/', include('campaign.urls')),
-    url(r'^$', 'website.views.index'),
+	url(r'^projects/', include('projects.urls')),
+	url(r'^$', 'website.views.index'),
 )
 
 if settings.DEBUG:
