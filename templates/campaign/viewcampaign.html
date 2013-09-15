@@ -43,6 +43,18 @@
  </div>
  <div class="campaign-meta row">
  <div class="span8">
+ 	<h5>Time left</h5> 
+  <span>{{ campaign.end_date|timeuntil }}</span>
+  `<div class="time-progress progress">
+  	{% if time_elapsed > 30 %}
+        <div class="bar bar-warning" style="width: {{ time_elapsed }}%;"></div>
+    {% elif time_elapsed > 60 %}
+    	<div class="bar bar-danger" style="width: {{ time_elapsed }}%;"></div>
+    {% else %}
+        <div class="bar bar-info" style="width: {{time_elapsed}}%;"></div>
+    {% endif %}
+   	</div>
+
    <h5>Goals</h5>
    {% for need in needs %}
    <span >{{ need.fulfilled }} of {{ need.donation.amount }} 
@@ -59,10 +71,8 @@
      <div class="bar" style="width: {{need.fulfilled_percent}}%;"></div>
    </div>
    {% endfor %}
-  Time left: 
-  {{ campaign.end_date|timeuntil }}
  </div>
 </div>
- 	<h4>What's the campaign about?</h4>
+ 	<h3>Description</h3>
  <div>{{campaign.description}}</div>
 {% endblock %}
