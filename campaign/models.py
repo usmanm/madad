@@ -6,15 +6,25 @@ class Campaign(BaseModel):
   name = models.TextField()
   tagline = models.TextField()
   description = models.TextField()
-  image_url = models.URLField()
+  image = models.ImageField(upload_to='campaign/')
   needs = models.ManyToManyField(Donation, through='Need',
                                  related_name='needed_for')
   start_date = models.DateField()
   end_date = models.DateField()
 
 class Need(BaseModel):
-  need = models.ForeignKey(Donation)
+  donation = models.ForeignKey(Donation)
   campaign = models.ForeignKey(Campaign)
-  fulfilled = models.DecimalField()
-  target = models.DecimalField()
-  #substitution  factor
+
+  @property
+  def remaining(self):
+    remaining = self.donation.amount
+    for donation in self.campaign.donations.all(user__isnull=False):
+      if type(donation) != type(self.donation):
+        continue
+      remaining -= donation.amount
+    return remaining
+  
+  @property
+  def fulfilled(self):
+    return self.donation.amount - self.remaining()
