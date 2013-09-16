@@ -25,3 +25,6 @@ class DonationActivity(Activity):
 
 class FollowActivity(Activity):
   followed_user = models.ForeignKey(User)
+
+class CampaignCreateActivity(Activity):
+  campaign = models.ForeignKey(Campaign)

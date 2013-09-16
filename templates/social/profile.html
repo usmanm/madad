@@ -56,6 +56,8 @@ Madad - {{ profile_user.first_name }} {{ profile_user.last_name }} ({{ profile_u
     Donated ${{ activity.donationactivity.donation.amount }} to <a href="/campaign/viewcampaign/{{ activity.donationactivity.donation.campaign.hash_id }}">{{ activity.donationactivity.donation.campaign.name }}
     {% elif activity.followactivity %}
     Started following <a href="/social/user/{{ activity.followactivity.followed_user.username }}">{{ activity.followactivity.followed_user.first_name }} {{ activity.followactivity.followed_user.last_name }}
+    {% elif activity.campaigncreateactivity %}
+    Started a new campaign <a href="/campaign/viewcampaign/{{ activity.campaigncreateactivity.campaign.hash_id }}">{{ activity.campaigncreateactivity.campaign.name }}
     {% endif %}
     </a>.</p>
     <div class="activity-meta">

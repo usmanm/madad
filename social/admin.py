@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from social.models import User, DonationActivity, FollowActivity
+from social.models import User, DonationActivity, FollowActivity, CampaignCreateActivity
 
 class UserAdmin(admin.ModelAdmin):
   pass
@@ -16,3 +16,8 @@ class FollowActivityAdmin(admin.ModelAdmin):
   pass
 
 admin.site.register(FollowActivity, FollowActivityAdmin)
+
+class CampaignCreateActivityAdmin(admin.ModelAdmin):
+  pass
+
+admin.site.register(CampaignCreateActivity, CampaignCreateActivityAdmin)
